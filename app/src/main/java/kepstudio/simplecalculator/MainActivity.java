@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button plus, minus, multiply, divide;
+    Button plus, minus, multiply, divide, clear;
     EditText num1, num2;
     TextView answer;
 
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         minus = (Button)findViewById(R.id.subtract);
         multiply = (Button)findViewById(R.id.multiply);
         divide = (Button)findViewById(R.id.divide);
+        clear = (Button)findViewById(R.id.clear);
 
         num1 = (EditText)findViewById(R.id.num1);
         num2 = (EditText)findViewById(R.id.num2);
@@ -58,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
                 double ret = divide(Double.parseDouble(num2.getText().toString()),
                         Double.parseDouble(num1.getText().toString()));
                 answer.setText(Double.toString(ret));
+            }
+        });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                num1.setText("");
+                num2.setText("");
+                answer.setText("Answer");
             }
         });
     }
