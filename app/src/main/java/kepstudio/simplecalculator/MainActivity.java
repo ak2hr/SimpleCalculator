@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button plus, minus, multiply, divide, clear;
     EditText num1, num2;
-    TextView answer;
+    TextView answer, sign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
         num2 = (EditText)findViewById(R.id.num2);
 
         answer = (TextView)findViewById(R.id.textView);
+        sign = (TextView)findViewById(R.id.sign);
 
         plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 double ret = add(Double.parseDouble(num1.getText().toString()),
                         Double.parseDouble(num2.getText().toString()));
                 answer.setText(Double.toString(ret));
+                sign.setText("+");
             }
         });
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 double ret = subtract(Double.parseDouble(num2.getText().toString()),
                         Double.parseDouble(num1.getText().toString()));
                 answer.setText(Double.toString(ret));
+                sign.setText("-");
             }
         });
 
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 double ret = multiply(Double.parseDouble(num1.getText().toString()),
                         Double.parseDouble(num2.getText().toString()));
                 answer.setText(Double.toString(ret));
+                sign.setText("*");
             }
         });
 
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 double ret = divide(Double.parseDouble(num2.getText().toString()),
                         Double.parseDouble(num1.getText().toString()));
                 answer.setText(Double.toString(ret));
+                sign.setText("/");
             }
         });
 
@@ -67,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 num1.setText("");
                 num2.setText("");
                 answer.setText("Answer");
+                sign.setText("");
             }
         });
     }
